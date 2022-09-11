@@ -4,7 +4,7 @@
     {
         public T Data { get; set; }
 
-        public static implicit operator bool(MethodResponse<T> response) => response.Sucess;
+        public static implicit operator bool(MethodResponse<T> response) => response.Success;
         public static implicit operator T(MethodResponse<T> response) => response.Data;
 
         public new MethodResponse<T> AddError(string errorMessage)
@@ -50,13 +50,13 @@
 
         public new MethodResponse<T> AsSucces()
         {
-            this.Sucess = true;
+            this.Success = true;
             return this;
         }
 
         public new MethodResponse<T> AsFailure()
         {
-            this.Sucess = false;
+            this.Success = false;
             return this;
         }
     }
@@ -64,10 +64,10 @@
     public class MethodResponse : IResponse
     {
 
-        public bool Sucess { get; set; }
+        public bool Success { get; set; }
         public IList<ApiError> Errors { get; set; } = new List<ApiError>();
 
-        public static implicit operator bool(MethodResponse response) => response.Sucess;
+        public static implicit operator bool(MethodResponse response) => response.Success;
 
         public MethodResponse AddError(string errorMessage)
         {
@@ -112,13 +112,13 @@
 
         public MethodResponse AsSucces()
         {
-            this.Sucess = true;
+            this.Success = true;
             return this;
         }
 
         public MethodResponse AsFailure()
         {
-            this.Sucess = false;
+            this.Success = false;
             return this;
         }
     }

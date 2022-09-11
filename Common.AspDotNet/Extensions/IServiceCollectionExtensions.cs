@@ -2,7 +2,7 @@
 using Common.Providers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Common.AspDotNet
+namespace Common.AspDotNet.Extensions
 {
     public static class IServiceCollectionExtensions
     {

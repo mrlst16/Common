@@ -5,7 +5,7 @@
     {
         public T Data { get; set; }
 
-        public bool Sucess { get; set; }
+        public bool Success { get; set; } = true;
 
         public IList<ApiError> Errors { get; set; }
 
@@ -20,7 +20,7 @@
                 if (_message != null)
                     return _message;
 
-                return Sucess ? SuccessMessage : FailureMessage;
+                return Success ? SuccessMessage : FailureMessage;
             }
         }
     }

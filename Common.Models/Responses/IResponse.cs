@@ -7,7 +7,7 @@
 
     public interface IResponse
     {
-        bool Sucess { get; }
+        bool Success { get; }
         IList<ApiError> Errors { get; set; }
     }
 }

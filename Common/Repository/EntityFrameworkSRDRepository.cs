@@ -23,11 +23,15 @@ namespace Common.Repository
             TId result = default(TId);
 
             var set = _context.Set<T>();
+
+            //If the id is set to default, force add
+
+
             //If it exists
             var entityResult =
                 (set.Any(x => x.Id.Equals(obj.Id))) //Test if the object exists by Id
                     ? set.Update(obj) //If it exists, update it
-                    : await set.AddAsync(obj); // if it doesn't exist, add it
+                        : await set.AddAsync(obj); // if it doesn't exist, add it
 
             await _context.SaveChangesAsync();
             return entityResult.Entity.Id;
@@ -49,9 +53,9 @@ namespace Common.Repository
         }
 
         public async Task<T> ReadAsync(TId id)
-            => await _context.Set<T>()
-                ?.FirstOrDefaultAsync(x => x.Id.Equals(id))
-                    ?? default(T);
+            => (await _context.Set<T>()
+                    ?.FirstOrDefaultAsync(x => x.Id.Equals(id))
+                ?? default(T));
 
         public async Task<bool> DeleteAsync(TId id)
         {
