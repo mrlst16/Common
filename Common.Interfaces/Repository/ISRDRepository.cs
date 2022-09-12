@@ -3,7 +3,7 @@
 namespace Common.Interfaces.Repository
 {
     public interface ISRDRepository<T, TId>
-    where T : EntityBase<TId>
+        where T : EntityBase<TId>
     {
         Task<TId> SaveAsync(T obj);
         Task<IEnumerable<TId>> SaveAsync(IEnumerable<T> obj);

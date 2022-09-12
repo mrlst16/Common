@@ -2,7 +2,7 @@
 using Common.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Common.Repository
+namespace Common.EntityFramework.Repository
 {
     public class EntityFrameworkSRDRepository<D, T, TId> : ISRDRepository<T, TId>
         where D : DbContext

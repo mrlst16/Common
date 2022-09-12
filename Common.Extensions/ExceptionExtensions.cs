@@ -15,7 +15,7 @@ namespace Common.Extensions
                         Message = exception.Message
                     }
                 },
-                Sucess = false,
+                Success = false,
                 Data = null
             };
             return response;

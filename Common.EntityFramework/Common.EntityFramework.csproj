@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Common.Interfaces\Common.Interfaces.csproj" />
     <ProjectReference Include="..\Common.Models\Common.Models.csproj" />
   </ItemGroup>
 
