@@ -69,7 +69,8 @@ namespace Common.EntityFramework.Repository
             return false;
         }
 
+        //TODO: Look into Query Filters
         public async Task<IEnumerable<T>> ReadAsync(Func<T, bool> predicate)
-            => _context.Set<T>().Where(predicate);
+            => _context.Set<T>().Where(x => predicate(x) && x.DeletedUTC == null);
     }
 }

@@ -5,7 +5,7 @@ namespace Common.EntityFramework
 {
     public class EntityBaseHelper<T, Tid>
         where T : EntityBase<Tid>
-        where Tid: IEquatable<Tid>
+        where Tid : IEquatable<Tid>
     {
         private readonly DbContext _context;
 
