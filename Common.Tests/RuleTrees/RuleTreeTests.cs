@@ -1,4 +1,8 @@
-﻿using Xunit;
+﻿using Common.Interfaces.RuleTrees;
+using Common.Models.MockData;
+using Common.RuleTrees;
+using Common.RuleTrees.Comparison;
+using Xunit;
 
 namespace Common.Tests.RuleTrees
 {

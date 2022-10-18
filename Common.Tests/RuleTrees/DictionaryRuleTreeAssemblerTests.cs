@@ -8,8 +8,6 @@ namespace Common.Tests.RuleTrees
 {
     public class DictionaryRuleTreeAssemblerTests
     {
-
-
         [Fact]
         public async Task Passes_AllDataAvaliable_Passes()
         {

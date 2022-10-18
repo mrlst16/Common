@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using Common.Models.MockData;
+using Xunit;
 
 namespace Common.Tests.RuleTrees
 {

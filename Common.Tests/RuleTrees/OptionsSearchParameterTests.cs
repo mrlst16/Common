@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using Common.RuleTrees;
+using Xunit;
 
 namespace Common.Tests.RuleTrees
 {

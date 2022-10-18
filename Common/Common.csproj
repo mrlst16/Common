@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <TargetFramework>net6.0</TargetFramework>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>C:\Users\mrlst\OneDrive\Portfolio\Tools\DocViewer\Documentations\Common.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
