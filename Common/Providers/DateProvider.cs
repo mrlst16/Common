@@ -1,10 +1,12 @@
-﻿using Common.Interfaces.Providers;
+﻿using System.Diagnostics.CodeAnalysis;
+using Common.Interfaces.Providers;
 
 namespace Common.Providers
 {
     /// <summary>
     /// Provides DateTimes to be used in place of the static methods
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class DateProvider : IDateProvider
     {
         /// <summary>
