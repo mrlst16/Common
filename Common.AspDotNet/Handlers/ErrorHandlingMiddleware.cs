@@ -5,6 +5,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System.Net;
+using System.Security.Authentication;
 
 namespace Common.AspDotNet.Handlers
 {
@@ -45,6 +46,10 @@ namespace Common.AspDotNet.Handlers
                         break;
                     case HttpException e:
                         response.StatusCode = e.StatusCode;
+                        apiResponse = e.AsApiResponse();
+                        break;
+                    case AuthenticationException e:
+                        response.StatusCode = 401;
                         apiResponse = e.AsApiResponse();
                         break;
                     default:
