@@ -26,9 +26,16 @@ namespace Common.Tests.Helpers
             Assert.Equal(length, result.Length);
         }
 
-        public async Task RandomAlphanumericString_OnlyAlphanumericCharacters()
+        [Theory]
+        [InlineData(1)]
+        [InlineData(10)]
+        [InlineData(25)]
+        [InlineData(100)]
+        public async Task RandomAlphanumericString_OnlyAlphanumericCharacters(
+            int length
+            )
         {
-            var result = StringHelper.RandomAlphanumericString(100);
+            var result = StringHelper.RandomAlphanumericString(length);
             foreach (char character in result)
             {
                 Assert.True(alphanumericCharacters.Contains(character));
