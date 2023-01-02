@@ -6,11 +6,8 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageOutputPath>c:\\nuget</PackageOutputPath>
+    <Version>1.0.1</Version>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Common.Models\Common.Models.csproj" />

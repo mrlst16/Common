@@ -1,5 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Common.Interfaces.Providers;
+﻿using Common.Interfaces.Providers;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Common.Providers
 {
