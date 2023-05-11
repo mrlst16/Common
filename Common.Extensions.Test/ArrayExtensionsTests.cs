@@ -12,7 +12,7 @@ namespace Common.Extensions.Test
         {
             int[] array = { 1, 2, 3, 4 };
             var result = array.Switch(p1, p2);
-
+            
             Assert.Equal(result, expected);
         }
 

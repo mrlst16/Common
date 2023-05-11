@@ -15,5 +15,6 @@
             !array.GroupBy(k => k)
                 .Select(x => x.Count())
                 .Any(x => x > 1);
+
     }
 }
