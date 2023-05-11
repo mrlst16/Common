@@ -71,10 +71,10 @@
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="array"></param>
-        /// <param name="x1">Inclusive starting x coordinate</param>
-        /// <param name="x2">Inclusive ending x coordinate</param>
-        /// <param name="y1">Inclusive starting y coordinate</param>
-        /// <param name="y2">Inclusive ending y coordinate</param>
+        /// <param name="x1">Inclusive starting x coordinate from the top</param>
+        /// <param name="x2">Inclusive ending x coordinate from the top</param>
+        /// <param name="y1">Inclusive starting y coordinate from the left</param>
+        /// <param name="y2">Inclusive ending y coordinate from the left</param>
         /// <returns>2D array representing the </returns>
         public static T[,] GetSquare<T>(
             this T[,] array,
@@ -84,15 +84,31 @@
             int y2
             )
         {
-            T[,] result = new T[x2 - x1, y1 - y2];
+            int n = array.GetLength(0);
+            int m = array.GetLength(1);
 
-            for (int i = x1; i < x2; i++)
-            {
+            if (
+                x1 > x2
+            ) throw new ArgumentOutOfRangeException(nameof(x1));
+
+            if (
+                y1 > x2
+            ) throw new ArgumentOutOfRangeException(nameof(y1));
+
+            if (
+                x2 >= n
+            ) throw new ArgumentOutOfRangeException(nameof(x2));
+
+            if (
+                y2 >= m
+            ) throw new ArgumentOutOfRangeException(nameof(y2));
+
+
+            T[,] result = new T[x2 - x1 + 1, y2 - y1 + 1];
+
+            for (int i = x1; i <= x2; i++)
                 for (int j = y1; j <= y2; j++)
-                {
-
-                }
-            }
+                    result[i - x1, j - y1] = array[i, j];
 
             return result;
         }
