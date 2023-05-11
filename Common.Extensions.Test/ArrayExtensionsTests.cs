@@ -8,7 +8,7 @@ namespace Common.Extensions.Test
         
         [Theory]
         [MemberData(nameof(SwitchTestData))]
-        public void SwitchTest(int p1, int p2, int[] expected)
+        public void SwitchTheory(int p1, int p2, int[] expected)
         {
             int[] array = { 1, 2, 3, 4 };
             var result = array.Switch(p1, p2);
@@ -18,7 +18,7 @@ namespace Common.Extensions.Test
 
         [Theory]
         [MemberData(nameof(UniqueTestData))]
-        public void IsUniqueTests(int[] array, bool expected)
+        public void IsUniqueTheory(int[] array, bool expected)
         {
             var result = array.IsUnique();
             Assert.Equal(expected, result);
