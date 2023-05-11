@@ -51,6 +51,32 @@ namespace Common.Extensions.Test
             Assert.Equal(expected, result);
         }
 
+        [Theory]
+        [MemberData(nameof(ShiftForwardAroundTestData))]
+        public void ShiftForwardAroundTheory(int positions, int[] expected)
+        {
+            int[] array = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+
+            var result = array.ShiftForwardAround(positions);
+            Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void ShiftForwardAroundThrowsArgmentOutOfRangeException_PositionsEqualToLength()
+        {
+            int[] array = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => array.ShiftForwardAround(7));
+        }
+
+        [Fact]
+        public void ShiftForwardAroundThrowsArgmentOutOfRangeException_PositionsGreaerThanLength()
+        {
+            int[] array = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => array.ShiftForwardAround(8));
+        }
+
         #endregion
 
 
@@ -80,6 +106,17 @@ namespace Common.Extensions.Test
         {
             new object[]{ 0, new int[]{ 1, 3, 5} },
             new object[]{ 1, new int[]{ 2, 4, 6} }
+        };
+
+        private static IEnumerable<object[]> ShiftForwardAroundTestData() => new List<object[]>
+        {
+            new object[]{ 0, new int[] { 1, 2, 3, 4, 5, 6, 7 } },
+            new object[]{ 1, new int[] { 7, 1, 2, 3, 4, 5, 6 } },
+            new object[]{ 2, new int[] { 6, 7, 1, 2, 3, 4, 5 } },
+            new object[]{ 3, new int[] { 5, 6, 7, 1, 2, 3, 4 } },
+            new object[]{ 4, new int[] { 4, 5, 6, 7, 1, 2, 3 } },
+            new object[]{ 5, new int[] { 3, 4, 5, 6, 7, 1, 2 } },
+            new object[]{ 6, new int[] { 2, 3, 4, 5, 6, 7, 1 } }
         };
 
         #endregion

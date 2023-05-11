@@ -16,7 +16,10 @@
                 .Select(x => x.Count())
                 .Any(x => x > 1);
 
-        public static T[] GetRow<T>(this T[,] array, int rowNumber)
+        public static T[] GetRow<T>(
+            this T[,] array,
+            int rowNumber
+            )
         {
             int length = array.GetLength(1);
             T[] result = new T[length];
@@ -27,7 +30,10 @@
             return result;
         }
 
-        public static T[] GetColumn<T>(this T[,] array, int columnNumber)
+        public static T[] GetColumn<T>(
+            this T[,] array,
+            int columnNumber
+            )
         {
             int length = array.GetLength(0);
             T[] result = new T[length];
@@ -35,6 +41,59 @@
             {
                 result[i] = array[i, columnNumber];
             }
+            return result;
+        }
+
+        public static T[] ShiftForwardAround<T>(
+            this T[] array,
+            int positions = 1
+            )
+        {
+            if (positions >= array.Length)
+                throw new ArgumentOutOfRangeException(nameof(positions));
+
+            if (positions == 0) return array;
+
+            T[] result = new T[array.Length];
+            int stoppingPoint = array.Length - positions;
+
+            for (int i = 0; i < positions; i++)
+                result[i] = array[stoppingPoint + i];
+
+            for (int i = positions; i < array.Length; i++)
+                result[i] = array[i - positions];
+
+            return result;
+        }
+
+        /// <summary>
+        /// Get the square indicated by x/y parameters
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <param name="x1">Inclusive starting x coordinate</param>
+        /// <param name="x2">Inclusive ending x coordinate</param>
+        /// <param name="y1">Inclusive starting y coordinate</param>
+        /// <param name="y2">Inclusive ending y coordinate</param>
+        /// <returns>2D array representing the </returns>
+        public static T[,] GetSquare<T>(
+            this T[,] array,
+            int x1,
+            int x2,
+            int y1,
+            int y2
+            )
+        {
+            T[,] result = new T[x2 - x1, y1 - y2];
+
+            for (int i = x1; i < x2; i++)
+            {
+                for (int j = y1; j <= y2; j++)
+                {
+
+                }
+            }
+
             return result;
         }
     }
