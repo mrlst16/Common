@@ -2,7 +2,11 @@
 {
     public static class ArrayExtensions
     {
-        public static T[] Switch<T>(this T[] array, int p1, int p2)
+        public static T[] Switch<T>(
+            this T[] array,
+            int p1,
+            int p2
+            )
         {
             var p1Val = array[p1];
             var p2Val = array[p2];
@@ -11,10 +15,30 @@
             return array;
         }
 
-        public static bool IsUnique<T>(this T[] array) =>
+        public static T[] Flatten<T>(this T[,] array)
+        {
+            T[] result = new T[array.Length];
+            int counter = 0;
+            for (int i = 0; i < array.GetLength(0); i++)
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                result[counter] = array[i, j];
+                counter++;
+            }
+            return result;
+        }
+
+        public static bool IsUnique<T>(
+            this T[] array
+            ) =>
             !array.GroupBy(k => k)
                 .Select(x => x.Count())
                 .Any(x => x > 1);
+
+        public static bool IsUnique<T>(this T[,] array)
+            => array
+                .Flatten()
+                .IsUnique();
 
         public static T[] GetRow<T>(
             this T[,] array,

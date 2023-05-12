@@ -4,7 +4,15 @@ namespace Common.Extensions.Test
 {
     public class ArrayExtensionsTests
     {
-        public int[,] FiveByFive
+        private int[,] ThreeByThree
+            => new int[,]
+            {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
+            };
+
+        private int[,] FiveByFive
             => new int[,] {
                     { 1, 2, 3, 4, 5 },
                     { 6, 7, 8, 9, 10},
@@ -122,6 +130,27 @@ namespace Common.Extensions.Test
         {
             int[,] result = FiveByFive.GetSquare(x1, x2, y1, y2);
             Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void FlattenTest()
+        {
+            int[] result = ThreeByThree.Flatten();
+            Assert.Equal(result, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+        }
+
+        [Fact]
+        public void IsUnique_2D_Unique2DArray()
+        {
+            Assert.True(ThreeByThree.IsUnique());
+        }
+
+        [Fact]
+        public void IsUnique_2D_NonUnique2DArray()
+        {
+            var array = ThreeByThree;
+            array[2, 2] = 1;
+            Assert.False(array.IsUnique());
         }
 
         #endregion
